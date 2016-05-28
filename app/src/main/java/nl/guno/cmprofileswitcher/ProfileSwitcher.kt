@@ -16,6 +16,11 @@ class ProfileSwitcher(context: Context) {
         return pm.profiles
     }
 
+    fun getActiveProfile() : Profile {
+        val pm = ProfileManager.getInstance(mContext)
+        return pm.activeProfile
+    }
+
     fun getProfile(uuid: UUID): Profile {
         val pm = ProfileManager.getInstance(mContext)
         return pm.getProfile(uuid)

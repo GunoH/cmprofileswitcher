@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">CMProfileSwitcher</string>
-    <string name="choose_profile">Choose profile</string>
     <string name="edit_settings_activity_name">Set profile</string>
 </resources>

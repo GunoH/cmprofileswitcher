@@ -14,17 +14,17 @@ class EditSettingsActivity : AbstractPluginActivity() {
         val ps = ProfileSwitcher(this)
         val profiles = ps.getProfiles().map { it -> MyProfile(it) }
 
-        val adapter = ProfileAdapter(this, R.layout.profile_row, profiles);
+        val adapter = ProfileAdapter(this, R.layout.profile_row, profiles)
 
         setContentView(R.layout.settings)
 
         val lv = findViewById(android.R.id.list) as ListView
-        lv.adapter = adapter;
+        lv.adapter = adapter
     }
 
     override fun onPostCreateWithPreviousResult(previousBundle: Bundle, previousBlurb: String) {
 
-        val profile = getProfile(this, previousBundle)
+        val profile = getProfile(this, previousBundle) ?: return
         val lv = findViewById(android.R.id.list) as ListView
 
         val adapter = lv.adapter as ProfileAdapter
@@ -44,7 +44,7 @@ class EditSettingsActivity : AbstractPluginActivity() {
     }
 
     override fun getResultBlurb(bundle: Bundle): String {
-        val profile = getProfile(this, bundle)
+        val profile = getProfile(this, bundle) ?: return ""
 
         val maxBlurbLength = resources.getInteger(
                 R.integer.com_twofortyfouram_locale_sdk_client_maximum_blurb_length)

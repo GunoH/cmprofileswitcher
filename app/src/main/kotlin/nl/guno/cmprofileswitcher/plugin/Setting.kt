@@ -16,7 +16,7 @@ class Setting : AbstractPluginSettingReceiver() {
 
     override fun firePluginSetting(context: Context, bundle: Bundle) {
         val ps = ProfileSwitcher(context)
-        ps.activateProfile(getProfile(context, bundle))
+        ps.activateProfile(getProfile(context, bundle) ?: return)
     }
 
 }

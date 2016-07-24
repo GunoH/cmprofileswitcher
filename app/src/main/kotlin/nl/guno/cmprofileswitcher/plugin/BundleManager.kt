@@ -25,7 +25,7 @@ fun newBundle(context: Context, profile: Profile) : Bundle {
     return result
 }
 
-fun getProfile(context: Context, bundle: Bundle) : Profile {
+fun getProfile(context: Context, bundle: Bundle) : Profile? {
     val uuid = UUID.fromString(bundle.getString(BUNDLE_EXTRA_STRING_PROFILE_UUID))
     val ps = ProfileSwitcher(context)
     return ps.getProfile(uuid)

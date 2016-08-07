@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply from: "../artifacts.gradle"
 
 // Only try to sign application if keystore properties are set.
 boolean signApplication = project.hasProperty('keystore.keyAlias') &&

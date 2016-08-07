@@ -1,6 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
+// Only try to sign application if keystore properties are set.
+boolean signApplication = project.hasProperty('keystore.keyAlias') &&
+        project.hasProperty('keystore.storeFile')
+
 repositories {
     mavenCentral()
     jcenter()
@@ -16,8 +20,27 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+        release {
+            if (signApplication) {
+                keyAlias project.property("keystore.keyAlias")
+                storeFile = file(project.property("keystore.storeFile"))
+
+                // These two lines make gradle believe that the signingConfigs
+                // section is complete. Without them, tasks like installRelease
+                // will not be available!
+                storePassword "notRealPassword"
+                keyPassword "notRealPassword"
+            } else {
+                null
+            }
+        }
+    }
     buildTypes {
         release {
+            if (signApplication) {
+                signingConfig signingConfigs.release
+            }
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -39,5 +62,20 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+task askForPasswords << {
+    // Must create String because System.readPassword returns char[]
+    // (and assigning that below fails silently)
+    def storePW = new String(System.console().readPassword("Keystore password: "))
+    def keyPW = new String(System.console().readPassword("Key password: "))
+
+    android.signingConfigs.release.storePassword = storePW
+    android.signingConfigs.release.keyPassword = keyPW
+}
+
+tasks.whenTaskAdded { theTask ->
+    if (signApplication && theTask.name.equals("packageRelease")) {
+        theTask.dependsOn "askForPasswords"
     }
 }

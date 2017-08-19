@@ -6,13 +6,9 @@ import com.twofortyfouram.locale.sdk.client.receiver.AbstractPluginSettingReceiv
 import nl.guno.cmprofileswitcher.ProfileSwitcher
 
 class Setting : AbstractPluginSettingReceiver() {
-    override fun isBundleValid(bundle: Bundle): Boolean {
-        return isValid(bundle)
-    }
+    override fun isBundleValid(bundle: Bundle): Boolean = isValid(bundle)
 
-    override fun isAsync(): Boolean {
-        return false
-    }
+    override fun isAsync(): Boolean = false
 
     override fun firePluginSetting(context: Context, bundle: Bundle) {
         val ps = ProfileSwitcher(context)

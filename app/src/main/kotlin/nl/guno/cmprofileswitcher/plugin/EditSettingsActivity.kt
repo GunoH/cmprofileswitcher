@@ -15,7 +15,7 @@ class EditSettingsActivity : AbstractPluginActivity() {
 
         if (!profileManagerAvaliable()) {
             Toast.makeText(this, R.string.profile_manager_not_available, Toast.LENGTH_LONG).show()
-            mIsCancelled = true;
+            mIsCancelled = true
             finish()
             return
         }
@@ -31,9 +31,7 @@ class EditSettingsActivity : AbstractPluginActivity() {
         lv.adapter = adapter
     }
 
-    private fun profileManagerAvaliable(): Boolean {
-        return ProfileManager.getService() != null
-    }
+    private fun profileManagerAvaliable(): Boolean = ProfileManager.getService() != null
 
     override fun onPostCreateWithPreviousResult(previousBundle: Bundle, previousBlurb: String) {
 
@@ -52,9 +50,7 @@ class EditSettingsActivity : AbstractPluginActivity() {
         return newBundle(this, profile.profile)
     }
 
-    override fun isBundleValid(bundle: Bundle): Boolean {
-        return isValid(bundle)
-    }
+    override fun isBundleValid(bundle: Bundle): Boolean = isValid(bundle)
 
     override fun getResultBlurb(bundle: Bundle): String {
         val profile = getProfile(this, bundle) ?: return ""

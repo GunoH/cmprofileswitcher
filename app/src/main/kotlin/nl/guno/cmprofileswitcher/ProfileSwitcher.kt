@@ -6,10 +6,7 @@ import cyanogenmod.app.ProfileManager
 import java.util.*
 
 class ProfileSwitcher(context: Context) {
-    val mContext:Context
-    init {
-        mContext = context
-    }
+    private val mContext:Context = context
 
     fun getProfiles(): Array<Profile> {
         val pm = ProfileManager.getInstance(mContext)

@@ -7,22 +7,18 @@ import com.twofortyfouram.locale.sdk.client.receiver.AbstractPluginConditionRece
 import nl.guno.cmprofileswitcher.ProfileSwitcher
 
 class Receiver : AbstractPluginConditionReceiver() {
-    override fun isBundleValid(bundle: Bundle): Boolean {
-        return isValid(bundle)
-    }
+    override fun isBundleValid(bundle: Bundle): Boolean = isValid(bundle)
 
-    override fun isAsync(): Boolean {
-        return false
-    }
+    override fun isAsync(): Boolean = false
 
     override fun getPluginConditionResult(context: Context, bundle: Bundle): Int {
         val activeProfile = ProfileSwitcher(context).getActiveProfile()
         val checkProfile = getProfile(context, bundle) ?: return Intent.RESULT_CONDITION_UNKNOWN
 
-        if (activeProfile.uuid.equals(checkProfile.uuid)) {
-            return Intent.RESULT_CONDITION_SATISFIED
+        return if (activeProfile.uuid == checkProfile.uuid) {
+            Intent.RESULT_CONDITION_SATISFIED
         } else {
-            return Intent.RESULT_CONDITION_UNSATISFIED
+            Intent.RESULT_CONDITION_UNSATISFIED
         }
     }
 

@@ -27,7 +27,7 @@ class EditSettingsActivity : AbstractPluginActivity() {
 
         setContentView(R.layout.settings)
 
-        val lv = findViewById(android.R.id.list) as ListView
+        val lv = findViewById<ListView>(android.R.id.list)
         lv.adapter = adapter
     }
 
@@ -36,14 +36,14 @@ class EditSettingsActivity : AbstractPluginActivity() {
     override fun onPostCreateWithPreviousResult(previousBundle: Bundle, previousBlurb: String) {
 
         val profile = getProfile(this, previousBundle) ?: return
-        val lv = findViewById(android.R.id.list) as ListView
+        val lv = findViewById<ListView>(android.R.id.list)
 
         val adapter = lv.adapter as ProfileAdapter
         adapter.selectedProfile = MyProfile(profile)
     }
 
     override fun getResultBundle(): Bundle {
-        val lv = findViewById(android.R.id.list) as ListView
+        val lv = findViewById<ListView>(android.R.id.list)
         val adapter = lv.adapter as ProfileAdapter
         val profile = adapter.selectedProfile
 

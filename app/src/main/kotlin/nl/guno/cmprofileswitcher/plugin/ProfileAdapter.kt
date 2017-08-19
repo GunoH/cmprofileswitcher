@@ -19,9 +19,9 @@ class ProfileAdapter(context: Context, resource: Int, profiles: List<MyProfile>)
         if (v == null) {
             val vi = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             v = vi.inflate(R.layout.profile_row, null)
-            v!!.findViewById(R.id.radiobutton) as RadioButton
+            v!!.findViewById<RadioButton>(R.id.radiobutton)
         }
-        val r = v.findViewById(R.id.radiobutton) as RadioButton
+        val r = v.findViewById<RadioButton>(R.id.radiobutton)
 
         r.text = getItem(position).toString()
         r.isChecked = position == selectedPosition

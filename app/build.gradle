@@ -11,13 +11,13 @@ repositories {
     jcenter()
 }
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
 
     defaultConfig {
         applicationId "nl.guno.cmprofileswitcher"
         minSdkVersion 22
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
     }
@@ -60,6 +60,9 @@ buildscript {
     ext.kotlin_version = '1.1.2-3'
     repositories {
         mavenCentral()
+        maven {
+            url 'https://maven.google.com'
+        }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -76,7 +79,7 @@ task askForPasswords << {
 }
 
 tasks.whenTaskAdded { theTask ->
-    if (signApplication && theTask.name.equals("packageRelease")) {
+    if (signApplication && theTask.name == "packageRelease") {
         theTask.dependsOn "askForPasswords"
     }
 }

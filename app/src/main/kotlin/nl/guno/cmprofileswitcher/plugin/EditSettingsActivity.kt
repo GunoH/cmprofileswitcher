@@ -2,7 +2,9 @@ package nl.guno.cmprofileswitcher.plugin
 
 import android.os.Bundle
 import android.widget.ListView
+import android.widget.Toast
 import com.twofortyfouram.locale.sdk.client.ui.activity.AbstractPluginActivity
+import cyanogenmod.app.ProfileManager
 import nl.guno.cmprofileswitcher.ProfileSwitcher
 import nl.guno.cmprofileswitcher.R
 
@@ -10,6 +12,13 @@ class EditSettingsActivity : AbstractPluginActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (!profileManagerAvaliable()) {
+            Toast.makeText(this, R.string.profile_manager_not_available, Toast.LENGTH_LONG).show()
+            mIsCancelled = true;
+            finish()
+            return
+        }
 
         val ps = ProfileSwitcher(this)
         val profiles = ps.getProfiles().map { it -> MyProfile(it) }
@@ -20,6 +29,10 @@ class EditSettingsActivity : AbstractPluginActivity() {
 
         val lv = findViewById(android.R.id.list) as ListView
         lv.adapter = adapter
+    }
+
+    private fun profileManagerAvaliable(): Boolean {
+        return ProfileManager.getService() != null
     }
 
     override fun onPostCreateWithPreviousResult(previousBundle: Bundle, previousBlurb: String) {

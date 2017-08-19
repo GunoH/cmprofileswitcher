@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CMProfileSwitcher</string>
+    <string name="app_name">ProfileSwitcher</string>
     <string name="edit_settings_activity_name">Set profile</string>
-    <string name="profile_manager_not_available">Profile manager is not available. Are you sure you\'re running a CM based ROM?</string>
+    <string name="profile_manager_not_available">Profile manager is not available. Are you sure you\'re running a CM/LOS based ROM?</string>
 </resources>

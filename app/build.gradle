@@ -3,8 +3,9 @@ apply plugin: 'kotlin-android'
 apply from: "../artifacts.gradle"
 
 // Only try to sign application if keystore properties are set.
-boolean signApplication = project.hasProperty('keystore.keyAlias') &&
-        project.hasProperty('keystore.storeFile')
+def keystorePropertiesFile = project.file("keystore.properties");
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 repositories {
     mavenCentral()
@@ -23,25 +24,15 @@ android {
     }
     signingConfigs {
         release {
-            if (signApplication) {
-                keyAlias project.property("keystore.keyAlias")
-                storeFile = file(project.property("keystore.storeFile"))
-
-                // These two lines make gradle believe that the signingConfigs
-                // section is complete. Without them, tasks like installRelease
-                // will not be available!
-                storePassword "notRealPassword"
-                keyPassword "notRealPassword"
-            } else {
-                null
-            }
+            keyAlias keystoreProperties["keystore.keyAlias"]
+            storeFile file(keystoreProperties["keystore.storeFile"])
+            storePassword keystoreProperties["keystore.storePassword"]
+            keyPassword keystoreProperties["keystore.keyPassword"]
         }
     }
     buildTypes {
         release {
-            if (signApplication) {
-                signingConfig signingConfigs.release
-            }
+            signingConfig signingConfigs.release
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -66,20 +57,5 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-task askForPasswords << {
-    // Must create String because System.readPassword returns char[]
-    // (and assigning that below fails silently)
-    def storePW = new String(System.console().readPassword("Keystore password: "))
-    def keyPW = new String(System.console().readPassword("Key password: "))
-
-    android.signingConfigs.release.storePassword = storePW
-    android.signingConfigs.release.keyPassword = keyPW
-}
-
-tasks.whenTaskAdded { theTask ->
-    if (signApplication && theTask.name == "packageRelease") {
-        theTask.dependsOn "askForPasswords"
     }
 }

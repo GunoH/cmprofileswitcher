@@ -5,7 +5,6 @@
 /.idea/shelf/
 /.idea/workspace.xml
 /.idea/libraries/
-/build/
+build/
 app/app.iml
-app/build
 

@@ -1,10 +1,6 @@
 .gradle
 /local.properties
-/.idea/copyright/
-/.idea/inspectionProfiles/
-/.idea/shelf/
-/.idea/workspace.xml
-/.idea/libraries/
+/.idea/
 build/
 app/app.iml
 

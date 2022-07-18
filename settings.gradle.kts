@@ -17,5 +17,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CMProfileSwitcher"
+rootProject.name = "Profile Switcher"
 include(":app")

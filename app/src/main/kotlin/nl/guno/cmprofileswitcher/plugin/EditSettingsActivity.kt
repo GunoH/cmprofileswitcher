@@ -45,7 +45,7 @@ class EditSettingsActivity : AbstractPluginActivity() {
     override fun getResultBundle(): Bundle {
         val lv = findViewById<ListView>(android.R.id.list)
         val adapter = lv.adapter as ProfileAdapter
-        val profile = adapter.selectedProfile
+        val profile = adapter.selectedProfile ?: MyProfile(ProfileManager.getInstance(this).activeProfile)
 
         return newBundle(this, profile.profile)
     }

@@ -33,7 +33,7 @@ class ProfileAdapter(context: Context, resource: Int, profiles: List<MyProfile>)
         return v
     }
 
-    var selectedProfile: MyProfile
+    var selectedProfile: MyProfile?
         get() = getItem(selectedPosition)
         set(profile) {
             selectedPosition = getPosition(profile)

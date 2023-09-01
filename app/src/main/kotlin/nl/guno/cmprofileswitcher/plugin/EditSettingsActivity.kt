@@ -56,7 +56,7 @@ class EditSettingsActivity : AbstractPluginActivity() {
         val profile = getProfile(this, bundle) ?: return ""
 
         val maxBlurbLength = resources.getInteger(
-                R.integer.com_twofortyfouram_locale_sdk_client_maximum_blurb_length)
+                com.twofortyfouram.locale.sdk.client.R.integer.com_twofortyfouram_locale_sdk_client_maximum_blurb_length)
 
         var result = "Profile: ${profile.name}"
         if (profile.name.length > maxBlurbLength) {

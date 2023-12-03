@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.widget.ListView
 import android.widget.Toast
 import com.twofortyfouram.locale.sdk.client.ui.activity.AbstractPluginActivity
-import cyanogenmod.app.ProfileManager
+import lineageos.app.ProfileManager
 import nl.guno.cmprofileswitcher.ProfileSwitcher
 import nl.guno.cmprofileswitcher.R
 

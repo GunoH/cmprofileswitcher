@@ -64,7 +64,8 @@ android {
 dependencies {
     val kotlinVersion by rootProject.extra.properties
 
-    implementation("org.cyanogenmod:platform.sdk:5.0.1")
+    implementation(fileTree("libs") { include("lineage-sdk-19.1-unofficial.jar") })
+
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
     implementation(group = "com.twofortyfouram", name = "android-plugin-client-sdk-for-locale", version = "[4.0.2, 5.0[")
 }

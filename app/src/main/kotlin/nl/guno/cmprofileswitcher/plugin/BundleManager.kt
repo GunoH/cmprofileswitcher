@@ -2,7 +2,7 @@ package nl.guno.cmprofileswitcher.plugin
 
 import android.content.Context
 import android.os.Bundle
-import cyanogenmod.app.Profile
+import lineageos.app.Profile
 import nl.guno.cmprofileswitcher.ProfileSwitcher
 import java.util.*
 

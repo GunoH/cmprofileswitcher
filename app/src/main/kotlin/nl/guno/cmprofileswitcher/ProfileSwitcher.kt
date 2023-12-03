@@ -1,8 +1,8 @@
 package nl.guno.cmprofileswitcher
 
 import android.content.Context
-import cyanogenmod.app.Profile
-import cyanogenmod.app.ProfileManager
+import lineageos.app.Profile
+import lineageos.app.ProfileManager
 import java.util.*
 
 class ProfileSwitcher(context: Context) {

@@ -1,6 +1,6 @@
 package nl.guno.cmprofileswitcher.plugin
 
-import cyanogenmod.app.Profile
+import lineageos.app.Profile
 
 class MyProfile(val profile: Profile) {
     override fun toString(): String = profile.name

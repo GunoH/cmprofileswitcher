@@ -41,7 +41,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             signingConfig = signingConfigs.getByName("release")
 
             isMinifyEnabled = true
@@ -51,7 +51,9 @@ android {
                 "proguard-rules.pro"
             )
         }
-
+        debug {
+            applicationIdSuffix = ".dev"
+        }
     }
 }
 

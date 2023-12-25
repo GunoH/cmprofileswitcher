@@ -13,7 +13,7 @@ class EditSettingsActivity : AbstractPluginActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (!profileManagerAvaliable()) {
+        if (!profileManagerAvailable()) {
             Toast.makeText(this, R.string.profile_manager_not_available, Toast.LENGTH_LONG).show()
             mIsCancelled = true
             finish()
@@ -21,7 +21,7 @@ class EditSettingsActivity : AbstractPluginActivity() {
         }
 
         val ps = ProfileSwitcher(this)
-        val profiles = ps.getProfiles().map { it -> MyProfile(it) }
+        val profiles = ps.getProfiles().map { MyProfile(it) }
 
         val adapter = ProfileAdapter(this, R.layout.profile_row, profiles)
 
@@ -31,7 +31,7 @@ class EditSettingsActivity : AbstractPluginActivity() {
         lv.adapter = adapter
     }
 
-    private fun profileManagerAvaliable(): Boolean = ProfileManager.getService() != null
+    private fun profileManagerAvailable(): Boolean = ProfileManager.getService() != null
 
     override fun onPostCreateWithPreviousResult(previousBundle: Bundle, previousBlurb: String) {
 

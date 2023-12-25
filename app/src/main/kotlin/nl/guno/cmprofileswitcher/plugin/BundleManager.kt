@@ -9,8 +9,8 @@ import java.util.*
 /**
  * versionCode of the plug-in that saved the Bundle.
  */
-val BUNDLE_EXTRA_INT_VERSION_CODE = "nl.guno.cmprofileswitcher.INT_VERSION_CODE"
-val BUNDLE_EXTRA_STRING_PROFILE_UUID = "nl.guno.cmprofileswitcher.STRING_PROFILE_UUID"
+const val BUNDLE_EXTRA_INT_VERSION_CODE = "nl.guno.cmprofileswitcher.INT_VERSION_CODE"
+const val BUNDLE_EXTRA_STRING_PROFILE_UUID = "nl.guno.cmprofileswitcher.STRING_PROFILE_UUID"
 
 fun isValid(bundle: Bundle): Boolean {
     return bundle.containsKey(BUNDLE_EXTRA_INT_VERSION_CODE)
@@ -40,14 +40,11 @@ fun getProfile(context: Context, bundle: Bundle) : Profile? {
  */
 fun getVersionCode(context: Context?): Int {
 
-    try {
-        return context!!.packageManager.getPackageInfo(context.packageName, 0).versionCode
+    return try {
+        context!!.packageManager.getPackageInfo(context.packageName, 0).versionCode
     } catch (e: UnsupportedOperationException) {
-        /*
-             * This exception is thrown by test contexts
-             */
-
-        return 1
+        // This exception is thrown by test contexts
+        1
     } catch (e: Exception) {
         throw RuntimeException(e)
     }

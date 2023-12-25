@@ -1,4 +1,4 @@
-package nl.guno.cmprofileswitcher.plugin
+package nl.guno.profileswitcher.plugin
 
 import lineageos.app.Profile
 

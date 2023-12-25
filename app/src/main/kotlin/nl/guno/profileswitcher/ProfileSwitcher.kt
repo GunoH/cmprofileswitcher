@@ -1,4 +1,4 @@
-package nl.guno.cmprofileswitcher
+package nl.guno.profileswitcher
 
 import android.content.Context
 import lineageos.app.Profile

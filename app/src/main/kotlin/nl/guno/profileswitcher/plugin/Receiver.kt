@@ -1,10 +1,10 @@
-package nl.guno.cmprofileswitcher.plugin
+package nl.guno.profileswitcher.plugin
 
 import android.content.Context
 import android.os.Bundle
 import com.twofortyfouram.locale.api.Intent
 import com.twofortyfouram.locale.sdk.client.receiver.AbstractPluginConditionReceiver
-import nl.guno.cmprofileswitcher.ProfileSwitcher
+import nl.guno.profileswitcher.ProfileSwitcher
 
 class Receiver : AbstractPluginConditionReceiver() {
     override fun isBundleValid(bundle: Bundle): Boolean = isValid(bundle)

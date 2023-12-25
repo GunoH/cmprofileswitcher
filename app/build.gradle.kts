@@ -11,7 +11,7 @@ val keystoreProperties = Properties()
 keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 
 android {
-    namespace = "nl.guno.cmprofileswitcher"
+    namespace = "nl.guno.profileswitcher"
     compileSdk = 34
     buildToolsVersion = "34.0.0"
 

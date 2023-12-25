@@ -1,16 +1,16 @@
-package nl.guno.cmprofileswitcher.plugin
+package nl.guno.profileswitcher.plugin
 
 import android.content.Context
 import android.os.Bundle
 import lineageos.app.Profile
-import nl.guno.cmprofileswitcher.ProfileSwitcher
+import nl.guno.profileswitcher.ProfileSwitcher
 import java.util.*
 
 /**
  * versionCode of the plug-in that saved the Bundle.
  */
-const val BUNDLE_EXTRA_INT_VERSION_CODE = "nl.guno.cmprofileswitcher.INT_VERSION_CODE"
-const val BUNDLE_EXTRA_STRING_PROFILE_UUID = "nl.guno.cmprofileswitcher.STRING_PROFILE_UUID"
+const val BUNDLE_EXTRA_INT_VERSION_CODE = "nl.guno.profileswitcher.INT_VERSION_CODE"
+const val BUNDLE_EXTRA_STRING_PROFILE_UUID = "nl.guno.profileswitcher.STRING_PROFILE_UUID"
 
 fun isValid(bundle: Bundle): Boolean {
     return bundle.containsKey(BUNDLE_EXTRA_INT_VERSION_CODE)

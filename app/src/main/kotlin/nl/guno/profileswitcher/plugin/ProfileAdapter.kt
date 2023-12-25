@@ -1,4 +1,4 @@
-package nl.guno.cmprofileswitcher.plugin
+package nl.guno.profileswitcher.plugin
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.RadioButton
 
-import nl.guno.cmprofileswitcher.R
+import nl.guno.profileswitcher.R
 
 class ProfileAdapter(context: Context, resource: Int, profiles: List<MyProfile>) :
         ArrayAdapter<MyProfile>(context, resource, profiles) {

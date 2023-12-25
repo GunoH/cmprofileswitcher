@@ -24,15 +24,6 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    android.sourceSets {
-        getByName("main") {
-            java.srcDirs("src/main/kotlin")
-            res.srcDirs("src/main/res")
-            assets.srcDirs("assets")
-            manifest.srcFile("src/main/AndroidManifest.xml")
-        }
-    }
-
     defaultConfig {
         applicationId = "nl.guno.cmprofileswitcher"
         minSdk = 22

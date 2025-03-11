@@ -59,11 +59,13 @@ android {
 
 dependencies {
     val kotlinVersion by rootProject.extra.properties
+    val twofortyfouramMonorepoLibVersion by properties
 
     implementation(fileTree("libs") { include("lineage-sdk-19.1-unofficial.jar") })
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-    implementation(group = "com.twofortyfouram", name = "android-plugin-client-sdk-for-locale", version = "[4.0.2, 5.0[")
+    implementation("com.twofortyfouram:android-plugin-api-for-locale:${twofortyfouramMonorepoLibVersion}")
+    implementation("com.twofortyfouram:android-plugin-client-sdk-for-locale:${twofortyfouramMonorepoLibVersion}")
 }
 buildscript {
     dependencies {

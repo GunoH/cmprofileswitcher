@@ -7,5 +7,5 @@ plugins {
 val kotlinVersion by extra { "2.0.21" }
 
 tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
+    delete(rootProject.layout.buildDirectory)
 }

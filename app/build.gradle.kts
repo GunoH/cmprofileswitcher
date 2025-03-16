@@ -61,7 +61,7 @@ dependencies {
     val kotlinVersion by rootProject.extra.properties
     val twofortyfouramMonorepoLibVersion by properties
 
-    implementation(fileTree("libs") { include("lineage-sdk-19.1-unofficial.jar") })
+    implementation(fileTree("libs") { include("lineage-sdk-22.1-unofficial.jar") })
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
     implementation("com.twofortyfouram:android-plugin-api-for-locale:${twofortyfouramMonorepoLibVersion}")

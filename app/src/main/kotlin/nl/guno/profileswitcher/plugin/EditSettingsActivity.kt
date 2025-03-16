@@ -7,6 +7,7 @@ import com.twofortyfouram.locale.sdk.client.ui.activity.AbstractPluginActivity
 import lineageos.app.ProfileManager
 import nl.guno.profileswitcher.ProfileSwitcher
 import nl.guno.profileswitcher.R
+import org.json.JSONObject
 
 class EditSettingsActivity : AbstractPluginActivity() {
 
@@ -33,27 +34,26 @@ class EditSettingsActivity : AbstractPluginActivity() {
 
     private fun profileManagerAvailable(): Boolean = ProfileManager.getService() != null
 
-    override fun onPostCreateWithPreviousResult(previousBundle: Bundle, previousBlurb: String) {
-
-        val profile = getProfile(this, previousBundle) ?: return
+    override fun onPostCreateWithPreviousResult(previousJson: JSONObject, previousBlurb: String) {
+        val profile = getProfile(this, previousJson) ?: return
         val lv = findViewById<ListView>(android.R.id.list)
 
         val adapter = lv.adapter as ProfileAdapter
         adapter.selectedProfile = MyProfile(profile)
     }
 
-    override fun getResultBundle(): Bundle {
+    override fun getResultJson(): JSONObject {
         val lv = findViewById<ListView>(android.R.id.list)
         val adapter = lv.adapter as ProfileAdapter
         val profile = adapter.selectedProfile ?: MyProfile(ProfileManager.getInstance(this).activeProfile)
 
-        return newBundle(this, profile.profile)
+        return newJsonObject(this, profile.profile)
     }
 
-    override fun isBundleValid(bundle: Bundle): Boolean = isValid(bundle)
+    override fun isJsonValid(json: JSONObject): Boolean = isValid(json)
 
-    override fun getResultBlurb(bundle: Bundle): String {
-        val profile = getProfile(this, bundle) ?: return ""
+    override fun getResultBlurb(json: JSONObject): String {
+        val profile = getProfile(this, json) ?: return ""
 
         val maxBlurbLength = resources.getInteger(
                 com.twofortyfouram.locale.sdk.client.R.integer.com_twofortyfouram_locale_sdk_client_maximum_blurb_length)

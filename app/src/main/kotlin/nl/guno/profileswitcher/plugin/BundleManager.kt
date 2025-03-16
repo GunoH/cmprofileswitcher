@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import lineageos.app.Profile
 import nl.guno.profileswitcher.ProfileSwitcher
+import org.json.JSONObject
 import java.util.*
 
 /**
@@ -12,21 +13,21 @@ import java.util.*
 const val BUNDLE_EXTRA_INT_VERSION_CODE = "nl.guno.profileswitcher.INT_VERSION_CODE"
 const val BUNDLE_EXTRA_STRING_PROFILE_UUID = "nl.guno.profileswitcher.STRING_PROFILE_UUID"
 
-fun isValid(bundle: Bundle): Boolean {
-    return bundle.containsKey(BUNDLE_EXTRA_INT_VERSION_CODE)
-            && bundle.containsKey(BUNDLE_EXTRA_STRING_PROFILE_UUID)
+fun isValid(jsonObject: JSONObject): Boolean {
+    return jsonObject.has(BUNDLE_EXTRA_INT_VERSION_CODE)
+            && jsonObject.has(BUNDLE_EXTRA_STRING_PROFILE_UUID)
 }
 
-fun newBundle(context: Context, profile: Profile) : Bundle {
-    val result = Bundle()
-    result.putInt(BUNDLE_EXTRA_INT_VERSION_CODE, getVersionCode(context))
-    result.putString(BUNDLE_EXTRA_STRING_PROFILE_UUID, profile.uuid.toString())
+fun newJsonObject(context: Context, profile: Profile) : JSONObject {
+    val result = JSONObject()
+    result.put(BUNDLE_EXTRA_INT_VERSION_CODE, getVersionCode(context))
+    result.put(BUNDLE_EXTRA_STRING_PROFILE_UUID, profile.uuid.toString())
 
     return result
 }
 
-fun getProfile(context: Context, bundle: Bundle) : Profile? {
-    val uuid = UUID.fromString(bundle.getString(BUNDLE_EXTRA_STRING_PROFILE_UUID))
+fun getProfile(context: Context, jsonObject: JSONObject) : Profile? {
+    val uuid = UUID.fromString(jsonObject.getString(BUNDLE_EXTRA_STRING_PROFILE_UUID))
     val ps = ProfileSwitcher(context)
     return ps.getProfile(uuid)
 }

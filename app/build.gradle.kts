@@ -12,8 +12,8 @@ keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 
 android {
     namespace = "nl.guno.profileswitcher"
-    compileSdk = 34
-    buildToolsVersion = "34.0.0"
+    compileSdk = 35
+    buildToolsVersion = "35.0.1"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
@@ -27,7 +27,7 @@ android {
     defaultConfig {
         applicationId = "nl.guno.cmprofileswitcher"
         minSdk = 22
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 3
         versionName = "1.2"
     }
